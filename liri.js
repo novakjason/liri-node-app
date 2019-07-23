@@ -25,6 +25,9 @@ function userInput(command, queryParam) {
         case 'movie-this':
             searchMovie(queryParam);
             break;
+        case 'do-what-it-says':
+            readText();
+            break;
         default:
             console.log('LIRI does not understand your command.');
     }
@@ -35,7 +38,7 @@ function searchSpotify(songName) {
 
     if (!songName) {
         songName = 'Ace of Base The Sign';
-        console.log('Default search parameters set to ')
+        console.log('Default search parameters set to: ' + songName);
     }
 
     //  Using callback function 
@@ -69,6 +72,11 @@ function searchSpotify(songName) {
 
 function searchVenue(artistName) {
 
+    if (!artistName) {
+        artistName = 'Red Hot Chili Peppers';
+        console.log('Default search parameters set to: ' + artistName);
+    }
+
     axios.get('https://rest.bandsintown.com/artists/' + artistName + '/events?app_id=codingbootcamp').then(
         function(response) {
             console.log('\n\n' + response.data[0].lineup);
@@ -84,6 +92,11 @@ function searchVenue(artistName) {
 }
 
 function searchMovie(movieName) {
+
+    if (!movieName) {
+        movieName = 'Mr. Nobody';
+        console.log('Default search parameters set to: ' + movieName);
+    }
 
     axios.get('http://www.omdbapi.com/?t=' + movieName + '&y=&plot=short&apikey=trilogy').then(
         function(response) {
@@ -106,4 +119,21 @@ function searchMovie(movieName) {
             console.log('\nActors:             ' + response.data.Actors + '\n\n');
         }
     );
+}
+
+
+function readText() {
+
+    fs.readFile('random.txt', 'utf8', function(err, data) {
+        if (err) throw err;
+
+        // Break the string down by comma separation and store the contents into the output array.
+        var output = data.split(",");
+
+        if (output.length == 2) {
+            userInput(output[0], output[1]);
+        } else if (output.length == 1) {
+            userInput(output[0]);
+        }
+    });
 }
