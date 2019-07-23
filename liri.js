@@ -55,11 +55,11 @@ function searchSpotify(songName) {
             if (spotifyPreview === null) {
                 spotifyPreview = 'Not available.';
             }
-            console.log('\n\n\nArtist: ' + songArr[i].artists.map(artistName) +
-                '\n\nTrack: ' + songArr[i].name +
-                '\n\nAlbum: ' + songArr[i].album.name +
-                '\n\nSpotify Preview: ' + spotifyPreview +
-                '\n\n\n_______________________________');
+            console.log('\n\n\nArtist:        ' + songArr[i].artists.map(artistName) +
+                '\n\nTrack:         ' + songArr[i].name +
+                '\n\nAlbum:         ' + songArr[i].album.name +
+                '\n\nPreview:       ' + spotifyPreview +
+                '\n\n\n____________________________________________________________________________________');
         }
     });
 }
