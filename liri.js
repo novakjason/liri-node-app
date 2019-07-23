@@ -1,9 +1,9 @@
-require("dotenv").config();
-var fs = require("fs");
-var moment = require("moment");
-var keys = require("./keys.js");
+require('dotenv').config();
+var fs = require('fs');
+var moment = require('moment');
+var keys = require('./keys.js');
 var Spotify = require('node-spotify-api');
-var axios = require("axios");
+var axios = require('axios');
 var spotify = new Spotify(keys.spotify);
 
 //  Variables holding command line arguments.
@@ -22,6 +22,9 @@ function userInput(command, queryParam) {
         case 'spotify-this-song':
             searchSpotify(queryParam);
             break;
+        case 'movie-this':
+            searchMovie(queryParam);
+            break;
         default:
             console.log('LIRI does not understand your command.');
     }
@@ -31,7 +34,7 @@ function userInput(command, queryParam) {
 function searchSpotify(songName) {
 
     if (!songName) {
-        songName = "Ace of Base The Sign";
+        songName = 'Ace of Base The Sign';
         console.log('Default search parameters set to ')
     }
 
@@ -66,16 +69,41 @@ function searchSpotify(songName) {
 
 function searchVenue(artistName) {
 
-    axios.get("https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp").then(
+    axios.get('https://rest.bandsintown.com/artists/' + artistName + '/events?app_id=codingbootcamp').then(
         function(response) {
             console.log('\n\n' + response.data[0].lineup);
             for (var i = 0; i < response.data.length; i++) {
 
-                console.log("\n\n\nVenue:      " + response.data[i].venue.name +
+                console.log('\n\n\nVenue:      ' + response.data[i].venue.name +
                     '\n\nLocation:   ' + response.data[i].venue.city + ', ' + response.data[i].venue.country +
                     '\n\nDate:       ' + moment(response.data[i].datetime).format('L') +
                     '\n\n\n____________________________________________________________________________________');
             }
+        }
+    );
+}
+
+function searchMovie(movieName) {
+
+    axios.get('http://www.omdbapi.com/?t=' + movieName + '&y=&plot=short&apikey=trilogy').then(
+        function(response) {
+
+            // * Title of the movie.
+            console.log('\n\n\nTitle:              ' + response.data.Title);
+            // * Year the movie came out.
+            console.log('\nYear:               ' + response.data.Year);
+            // * IMDB Rating of the movie.
+            console.log('\nIMDb:               ' + response.data.imdbRating + '/10');
+            // * Rotten Tomatoes Rating of the movie.
+            console.log('\nRotten Tomatoes:    ' + response.data.Ratings[1].Value);
+            // * Country where the movie was produced.
+            console.log('\nCountry:            ' + response.data.Country);
+            // * Language of the movie.
+            console.log('\nLanguage:           ' + response.data.Language);
+            // * Plot of the movie.
+            console.log('\nPlot:               ' + response.data.Plot);
+            // * Actors in the movie.
+            console.log('\nActors:             ' + response.data.Actors + '\n\n');
         }
     );
 }
