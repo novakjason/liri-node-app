@@ -1,7 +1,9 @@
 require("dotenv").config();
 var fs = require("fs");
+var moment = require("moment");
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
+var axios = require("axios");
 var spotify = new Spotify(keys.spotify);
 
 //  Variables holding command line arguments.
@@ -14,6 +16,9 @@ userInput(command, queryParam);
 //  Function to tell LIRI which command to use and what query parameter to search for using a switch statement.
 function userInput(command, queryParam) {
     switch (command) {
+        case 'concert-this':
+            searchVenue(queryParam);
+            break;
         case 'spotify-this-song':
             searchSpotify(queryParam);
             break;
@@ -24,6 +29,12 @@ function userInput(command, queryParam) {
 
 //  Function to call Spotify API using user's input passed through switch statement in userInput function.
 function searchSpotify(songName) {
+
+    if (!songName) {
+        songName = "Ace of Base The Sign";
+        console.log('Default search parameters set to ')
+    }
+
     //  Using callback function 
     spotify.search({ type: 'track', query: songName, limit: 10 }, function callback(err, data) {
         if (err) {
@@ -48,8 +59,23 @@ function searchSpotify(songName) {
                 '\n\nTrack: ' + songArr[i].name +
                 '\n\nAlbum: ' + songArr[i].album.name +
                 '\n\nSpotify Preview: ' + spotifyPreview +
-                '\n\n\n_______________________________'
-            );
+                '\n\n\n_______________________________');
         }
     });
+}
+
+function searchVenue(artistName) {
+
+    axios.get("https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp").then(
+        function(response) {
+            console.log('\n\n' + response.data[0].lineup);
+            for (var i = 0; i < response.data.length; i++) {
+
+                console.log("\n\n\nVenue:      " + response.data[i].venue.name +
+                    '\n\nLocation:   ' + response.data[i].venue.city + ', ' + response.data[i].venue.country +
+                    '\n\nDate:       ' + moment(response.data[i].datetime).format('L') +
+                    '\n\n\n____________________________________________________________________________________');
+            }
+        }
+    );
 }
