@@ -1,14 +1,16 @@
 require('dotenv').config();
-var fs = require('fs');
-var moment = require('moment');
-var keys = require('./keys.js');
-var Spotify = require('node-spotify-api');
-var axios = require('axios');
-var spotify = new Spotify(keys.spotify);
+let fs = require('fs');
+let moment = require('moment');
+let keys = require('./keys.js');
+let Spotify = require('node-spotify-api');
+let axios = require('axios');
+let spotify = new Spotify(keys.spotify);
 
 //  Variables holding command line arguments.
-var command = process.argv[2];
-var queryParam = process.argv[3];
+let command = process.argv[2];
+let queryParam = process.argv.slice(3).join(' ');
+
+let apiData = [];
 
 //  Running userInput function to pass through command line arguments as command and query parameters.
 userInput(command, queryParam);
@@ -33,6 +35,17 @@ function userInput(command, queryParam) {
     }
 }
 
+//  Function to append data to a text file.
+function dataLog(apiData) {
+
+    fs.appendFile("log.txt", apiData, function(err) {
+        if (err) throw err;
+        console.log(apiData);
+    })
+}
+
+
+
 //  Function to call Spotify API using user's input passed through switch statement in userInput function.
 function searchSpotify(songName) {
 
@@ -52,20 +65,25 @@ function searchSpotify(songName) {
         }
 
         //  Variable holding each result array object.
-        var songArr = data.tracks.items;
+        let songArr = data.tracks.items;
 
         //  Looping through each result and displaying appropriate data in the console.
-        for (var i = 0; i < songArr.length; i++) {
+        for (let i = 0; i < songArr.length; i++) {
 
-            var spotifyPreview = songArr[i].preview_url
+            let spotifyPreview = songArr[i].preview_url
             if (spotifyPreview === null) {
                 spotifyPreview = 'Not available.';
             }
-            console.log('\n\n\nArtist:        ' + songArr[i].artists.map(artistName) +
-                '\n\nTrack:         ' + songArr[i].name +
-                '\n\nAlbum:         ' + songArr[i].album.name +
-                '\n\nPreview:       ' + spotifyPreview +
-                '\n\n\n____________________________________________________________________________________');
+            apiData = [
+                '-------------------------------------------------------------------------------------------------------',
+                'Artist:        ' + songArr[i].artists.map(artistName),
+                'Track:         ' + songArr[i].name,
+                'Album:         ' + songArr[i].album.name,
+                'Preview:       ' + spotifyPreview,
+                '-------------------------------------------------------------------------------------------------------\n'
+            ].join('\n');
+
+            dataLog(apiData);
         }
     });
 }
@@ -79,13 +97,19 @@ function searchVenue(artistName) {
 
     axios.get('https://rest.bandsintown.com/artists/' + artistName + '/events?app_id=codingbootcamp').then(
         function(response) {
-            console.log('\n\n' + response.data[0].lineup);
-            for (var i = 0; i < response.data.length; i++) {
 
-                console.log('\n\n\nVenue:      ' + response.data[i].venue.name +
-                    '\n\nLocation:   ' + response.data[i].venue.city + ', ' + response.data[i].venue.country +
-                    '\n\nDate:       ' + moment(response.data[i].datetime).format('L') +
-                    '\n\n\n____________________________________________________________________________________');
+            for (let i = 0; i < response.data.length; i++) {
+
+                apiData = [
+                    '-------------------------------------------------------------------------------------------------------',
+                    'Artist(s):  ' + response.data[0].lineup,
+                    'Venue:      ' + response.data[i].venue.name,
+                    'Location:   ' + response.data[i].venue.city + ', ' + response.data[i].venue.country,
+                    'Date:       ' + moment(response.data[i].datetime).format('L'),
+                    '-------------------------------------------------------------------------------------------------------\n'
+                ].join('\n');
+
+                dataLog(apiData);
             }
         }
     );
@@ -101,22 +125,28 @@ function searchMovie(movieName) {
     axios.get('http://www.omdbapi.com/?t=' + movieName + '&y=&plot=short&apikey=trilogy').then(
         function(response) {
 
-            // * Title of the movie.
-            console.log('\n\n\nTitle:              ' + response.data.Title);
-            // * Year the movie came out.
-            console.log('\nYear:               ' + response.data.Year);
-            // * IMDB Rating of the movie.
-            console.log('\nIMDb:               ' + response.data.imdbRating + '/10');
-            // * Rotten Tomatoes Rating of the movie.
-            console.log('\nRotten Tomatoes:    ' + response.data.Ratings[1].Value);
-            // * Country where the movie was produced.
-            console.log('\nCountry:            ' + response.data.Country);
-            // * Language of the movie.
-            console.log('\nLanguage:           ' + response.data.Language);
-            // * Plot of the movie.
-            console.log('\nPlot:               ' + response.data.Plot);
-            // * Actors in the movie.
-            console.log('\nActors:             ' + response.data.Actors + '\n\n');
+            apiData = [
+                '-------------------------------------------------------------------------------------------------------',
+                // * Title of the movie.
+                'Title:              ' + response.data.Title,
+                // * Year the movie came out.
+                'Year:               ' + response.data.Year,
+                // * IMDB Rating of the movie.
+                'IMDb:               ' + response.data.imdbRating + '/10',
+                // * Rotten Tomatoes Rating of the movie.
+                'Rotten Tomatoes:    ' + response.data.Ratings[1].Value,
+                // * Country where the movie was produced.
+                'Country:            ' + response.data.Country,
+                // * Language of the movie.
+                'Language:           ' + response.data.Language,
+                // * Plot of the movie.
+                'Plot:               ' + response.data.Plot,
+                // * Actors in the movie.
+                'Actors:             ' + response.data.Actors,
+                '-------------------------------------------------------------------------------------------------------\n'
+            ].join('\n');
+
+            dataLog(apiData);
         }
     );
 }
@@ -128,7 +158,7 @@ function readText() {
         if (err) throw err;
 
         // Break the string down by comma separation and store the contents into the output array.
-        var output = data.split(",");
+        let output = data.split(",");
 
         if (output.length == 2) {
             userInput(output[0], output[1]);
