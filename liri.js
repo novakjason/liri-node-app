@@ -76,6 +76,8 @@ function searchSpotify(songName) {
             }
             apiData = [
                 '-------------------------------------------------------------------------------------------------------',
+                'Command used for results: {' + command + ' ' + queryParam + '}',
+                '-------------------------------------------------------------------------------------------------------',
                 'Artist:        ' + songArr[i].artists.map(artistName),
                 'Track:         ' + songArr[i].name,
                 'Album:         ' + songArr[i].album.name,
@@ -102,6 +104,8 @@ function searchVenue(artistName) {
 
                 apiData = [
                     '-------------------------------------------------------------------------------------------------------',
+                    'Command used for results: {' + command + ' ' + queryParam + '}',
+                    '-------------------------------------------------------------------------------------------------------',
                     'Artist(s):  ' + response.data[0].lineup,
                     'Venue:      ' + response.data[i].venue.name,
                     'Location:   ' + response.data[i].venue.city + ', ' + response.data[i].venue.country,
@@ -126,6 +130,8 @@ function searchMovie(movieName) {
         function(response) {
 
             apiData = [
+                '-------------------------------------------------------------------------------------------------------',
+                'Command used for results: {' + command + ' ' + queryParam + '}',
                 '-------------------------------------------------------------------------------------------------------',
                 // * Title of the movie.
                 'Title:              ' + response.data.Title,
