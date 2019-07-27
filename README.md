@@ -56,15 +56,15 @@
 
 
 ### 7. List of LIRI commands:
-- `node liri concert-this {artist(s) name}`
-- `node liri movie-this {movie name}`
-- `node liri spotify-this-song {song name}`
-- `node liri do-what-it-says`
+1. `node liri concert-this {artist(s) name}`
+2. `node liri movie-this {movie name}`
+3. `node liri spotify-this-song {song name}`
+4. `node liri do-what-it-says`
 
 
 ### 8. Examples of commands in use:
 
-- `node liri concert-this {artist(s) name}`
+1. `node liri concert-this {artist's name}`
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/bandsintown_command.png "concert-this")
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/bandsintown_results.png "concert results")
 
@@ -72,7 +72,7 @@
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/logging_example1.png "log.txt example")
 
 
-- `node liri spotify-this-song {song name}`
+2. `node liri movie-this {movie name}`
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/omdb_command.png "movie-this")
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/omdb_results.png "omdb results")
 
@@ -80,11 +80,11 @@
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/logging_example2.png "log.txt example 2")
 
 
-- `node liri spotify-this-song {song name}`
+3. `node liri spotify-this-song {song name}`
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/spotify_command.png "spotify-this-song")
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/spotify_results.png "spotify results")
 
 
-- `node liri do-what-it-says`
+4. `node liri do-what-it-says`
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/textfile_command.png "do-what-it-says")
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/textfile_results.png "text file results")
