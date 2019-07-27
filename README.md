@@ -1,18 +1,28 @@
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/LIRI.png "LIRI")
 # a command line node.js app
 
+<<<<<<< HEAD
 ## Instructions to use LIRI on local machine.
 ### 1. [Clone Github Repository](https://github.com/novakjason/liri-node-app)
+=======
+### Instructions to use LIRI on local machine.
+`1. Clone repository to your computer.`
+>>>>>>> 05b5bd1ad589e49e1024febee0ccaa1f35c98d65
 
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/clone1.png "clone github")
 
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/cli1.png "clone cli")
 
+<<<<<<< HEAD
+=======
+`2. Using **Bash/Terminal** on your device, navigate to the liri-node-app directory`
+>>>>>>> 05b5bd1ad589e49e1024febee0ccaa1f35c98d65
 
 ### 2. Using **Bash/Terminal** on your device, navigate to the liri-node-app directory
 
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/cli2.png "cd liri-node-app")
 
+<<<<<<< HEAD
 
 ### 3. Install the required Node packages by typing the following command: **{npm i}**
 
@@ -88,3 +98,8 @@
 - `node liri do-what-it-says`
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/textfile_command.png "do-what-it-says")
 ![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/textfile_results.png "text file results")
+=======
+`3. Instal the required Node packages by typing the following command: **{npm i}**`
+
+![alt text](https://github.com/novakjason/liri-node-app/blob/master/images/npmi.png "LIRI")
+>>>>>>> 05b5bd1ad589e49e1024febee0ccaa1f35c98d65
