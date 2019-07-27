@@ -1,28 +1,52 @@
 -------------------------------------------------------------------------------------------------------
-Command used for results: {concert-this maroon 5}
+Command used for results: {concert-this red hot chili peppers}
 -------------------------------------------------------------------------------------------------------
-Artist(s):  Maroon 5
-Venue:      Curacao North Sea Jazz Festival
-Location:   Willemstad, Curaçao, Netherlands Antilles
-Date:       08/31/2019
--------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------
-Command used for results: {concert-this maroon 5}
--------------------------------------------------------------------------------------------------------
-Artist(s):  Maroon 5
-Venue:      Seminole Hard Rock Hotel & Casino - Hollywood, FL
-Location:   Hollywood, United States
-Date:       10/25/2019
+Artist(s):  Red Hot Chili Peppers
+Venue:      Summer Sonic Osaka [08.16 - 08.18]
+Location:   Higashi-osaka, Japan
+Date:       08/16/2019
 -------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
-Command used for results: {movie-this titan ae}
+Command used for results: {concert-this red hot chili peppers}
 -------------------------------------------------------------------------------------------------------
-Title:              Titan A.E.
-Year:               2000
-IMDb:               6.6/10
-Rotten Tomatoes:    51%
+Artist(s):  Red Hot Chili Peppers
+Venue:      Summer Sonic Tokyo [08.16 - 08.18]
+Location:   Tokyo, Japan
+Date:       08/17/2019
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+Command used for results: {concert-this red hot chili peppers}
+-------------------------------------------------------------------------------------------------------
+Artist(s):  Red Hot Chili Peppers
+Venue:      Singapore Grand Prix
+Location:   Singapore, Singapore
+Date:       09/22/2019
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+Command used for results: {concert-this red hot chili peppers}
+-------------------------------------------------------------------------------------------------------
+Artist(s):  Red Hot Chili Peppers
+Venue:      Rock in Rio [09.27 - 10.06]
+Location:   Rio De Janeiro, Brazil
+Date:       10/03/2019
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+Command used for results: {concert-this red hot chili peppers}
+-------------------------------------------------------------------------------------------------------
+Artist(s):  Red Hot Chili Peppers
+Venue:      Ohana Festival [09.27 - 09.29]
+Location:   Dana Point, United States
+Date:       09/29/2019
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+Command used for results: {movie-this starship troopers}
+-------------------------------------------------------------------------------------------------------
+Title:              Starship Troopers
+Year:               1997
+IMDb:               7.2/10
+Rotten Tomatoes:    62%
 Country:            USA
-Language:           English, Mandarin
-Plot:               A young man learns that he has to find a hidden Earth ship before an enemy alien species does in order to secure the survival of humanity.
-Actors:             Matt Damon, Bill Pullman, John Leguizamo, Nathan Lane
+Language:           English
+Plot:               Humans in a fascist, militaristic future wage war with giant alien bugs.
+Actors:             Casper Van Dien, Dina Meyer, Denise Richards, Jake Busey
 -------------------------------------------------------------------------------------------------------

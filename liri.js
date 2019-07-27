@@ -11,6 +11,7 @@ let command = process.argv[2];
 let queryParam = process.argv.slice(3).join(' ');
 
 let apiData = [];
+let textFileCommand = [];
 
 //  Running userInput function to pass through command line arguments as command and query parameters.
 userInput(command, queryParam);
@@ -158,18 +159,19 @@ function searchMovie(movieName) {
 }
 
 
-function readText() {
+function readText(textFileCommand) {
 
     fs.readFile('random.txt', 'utf8', function(err, data) {
         if (err) throw err;
 
-        // Break the string down by comma separation and store the contents into the output array.
-        let output = data.split(",");
+        // Break the string down by comma separation and store the contents into the textFileCommand array.
+        textFileCommand = data.split(",");
 
-        if (output.length == 2) {
-            userInput(output[0], output[1]);
-        } else if (output.length == 1) {
-            userInput(output[0]);
+        if (textFileCommand.length == 2) {
+            console.log(textFileCommand);
+            userInput(textFileCommand[0], textFileCommand[1]);
+        } else if (textFileCommand.length == 1) {
+            userInput(textFileCommand[0]);
         }
     });
 }
