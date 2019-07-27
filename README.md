@@ -45,10 +45,10 @@
 
 ### 6. Using a text editor like VS Code or Notepad, edit the **.env** file and insert the following text: 
 
-`# Spotify API keys                             `
-`                                               `
-`SPOTIFY_ID=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  `
-`SPOTIFY_SECRET=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`
+`# Spotify API keys                             `  
+`                                               `  
+`SPOTIFY_ID=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  `  
+`SPOTIFY_SECRET=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`  
 
 #### Replace @@@@@@@@ with your Spotify Client ID and Secret.  
 
